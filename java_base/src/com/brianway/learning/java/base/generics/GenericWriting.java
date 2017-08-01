@@ -8,6 +8,7 @@ import java.util.List;
 public class GenericWriting {
     // 使用确切参数类型
     static <T> void writeExact(List<T> list, T item) {
+        System.out.println("w");
         list.add(item);
     }
 
@@ -20,16 +21,15 @@ public class GenericWriting {
         // Incompatible types: found Fruit, required Apple
     }
 
-    //
     static <T> void
     writeWithWildcard(List<? super T> list, T item) {
-        //list.remove(item);//如果是删除元素的话，那么super和extends都是可以的。
         list.add(item);
+        System.out.println("wa");
     }
 
     static void f2() {
         writeWithWildcard(apples, new Apple());
-        //writeWithWildcard(fruit, new Apple());
+        writeWithWildcard(fruit, new Apple());
     }
 
     public static void main(String[] args) {
@@ -37,3 +37,4 @@ public class GenericWriting {
         f2();
     }
 } ///:~
+//list.remove(item);//如果是删除元素的话，那么super和extends都是可以的。
